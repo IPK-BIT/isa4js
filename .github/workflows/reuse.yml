@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+# SPDX-License-Identifier: CC-BY-4.0
+
+name: REUSE Compliance Check
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+permissions:
+  contents: read
+
+jobs:
+  reuse-compliance-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run REUSE Linter
+        uses: fsfe/reuse-action@v6

@@ -1,10 +1,12 @@
-// tests/table.test.ts
+// SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+// SPDX-License-Identifier: ISC
+
 import { describe, it, expect } from 'vitest';
 import { FlowGraph } from '../src/utils/graph.js';
 import { determineHeaders, convertTable } from '../src/mappers/table.js';
 
 describe('Table Graph and Header Utility Tests', () => {
-  
+
   // ==========================================
   // STUDY SUITE
   // ==========================================
@@ -32,7 +34,7 @@ describe('Table Graph and Header Utility Tests', () => {
               type: "Material",
               characteristics: [
                 {
-                  category: { 
+                  category: {
                     characteristicType: { annotationValue: "organism" }
                   },
                   value: {

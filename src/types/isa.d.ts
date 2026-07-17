@@ -1,7 +1,11 @@
+// SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+//
+// SPDX-License-Identifier: ISC
+
 /* eslint-disable */
 /**
  * This file was automatically generated.
- * DO NOT MODIFY IT BY HAND. Run "npm run generate-types" instead.
+ * DO NOT MODIFY IT BY HAND. Run "pnpm run generate-types" instead.
  */
 
 /**

@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+# SPDX-License-Identifier: CC-BY-4.0
+
 # This CITATION.cff file was generated with cffinit.
 # Visit https://bit.ly/cffinit to generate yours today!
 
@@ -19,7 +22,7 @@ repository-code: 'https://github.com/ipk-bit/isa4js'
 abstract: >-
   A robust, lightweight TypeScript library that converts
   complex ISA-JSON structures into flat, standard ISA-Tab
-  files. 
+  files.
 keywords:
   - ISA
   - Converter

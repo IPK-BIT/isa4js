@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+// SPDX-License-Identifier: ISC
+
 import { defineConfig, type Options } from 'tsup';
 
 export default defineConfig((options) => {

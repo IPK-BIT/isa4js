@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+// SPDX-License-Identifier: ISC
+
 export interface GraphNode {
   id: string;
   name: string;
@@ -15,7 +18,7 @@ export interface ProcessEdge {
 export class FlowGraph {
   nodes = new Map<string, GraphNode>();
   edges: ProcessEdge[] = [];
-  
+
   // Adjacency mapping for traversal
   outgoing = new Map<string, { edge: ProcessEdge; targetId: string }[]>();
   incoming = new Map<string, { edge: ProcessEdge; sourceId: string }[]>();
@@ -58,10 +61,10 @@ export class FlowGraph {
     // Helper to resolve the correct ISA-Tab node type
     const determineNodeType = (entity: any): string => {
       const id = entity['@id'] || entity.name;
-      
+
       // 1. Check data files (usually explicitly labeled in their type, e.g., 'Raw Data File')
       if (entity.type && entity.type.toLowerCase().includes('data file')) {
-        return entity.type; 
+        return entity.type;
       }
 
       // 2. Resolve mapped material nodes
@@ -77,7 +80,7 @@ export class FlowGraph {
 
     for (const proc of processSequence) {
       const protocolName = proc.executesProtocol?.name || 'Unknown Protocol';
-      
+
       const inputIds: string[] = [];
       const outputIds: string[] = [];
 

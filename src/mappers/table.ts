@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+// SPDX-License-Identifier: ISC
+
 import { FlowGraph, GraphNode, ProcessEdge } from '../utils/graph.js';
 import { ISAStudyJSONSchema, ISAAssayJSONSchema } from '../types/isa.js';
 
@@ -25,7 +28,7 @@ function buildHeaderMappings(longestSequence: any[]): { headers: string[]; mappi
   for (const element of longestSequence) {
     if (element.type === 'node') {
       const currentNodeIdx = nodeCounter;
-      
+
       // Node Column (e.g., "Source Name")
       headers.push(element.data.nodeType || 'Node Name');
       mappings.push({
@@ -38,10 +41,10 @@ function buildHeaderMappings(longestSequence: any[]): { headers: string[]; mappi
       // Extract Node Characteristics
       if (element.data.rawEntity.characteristics) {
         element.data.rawEntity.characteristics.forEach((char: any, charIdx: number) => {
-          const category = char.category?.characteristicType?.annotationValue 
-            || char.category?.annotationValue 
+          const category = char.category?.characteristicType?.annotationValue
+            || char.category?.annotationValue
             || 'Unknown';
-          
+
           // Characteristics Value
           const charHeader = `Characteristics [${category}]`;
           headers.push(charHeader);
@@ -106,7 +109,7 @@ function buildHeaderMappings(longestSequence: any[]): { headers: string[]; mappi
       if (element.data.rawProcess.parameterValues) {
         element.data.rawProcess.parameterValues.forEach((param: any, paramIdx: number) => {
           const paramName = param.category?.parameterName?.annotationValue || 'Unknown';
-          
+
           // Parameter Value
           const paramHeader = `Parameter Value [${paramName}]`;
           headers.push(paramHeader);
@@ -161,7 +164,7 @@ export function determineHeaders(tableData: ISAStudyJSONSchema | ISAAssayJSONSch
   const sequences = graph.getLinearSequences();
   if (sequences.length === 0) return [];
 
-  const longestSequence = sequences.reduce((longest, current) => 
+  const longestSequence = sequences.reduce((longest, current) =>
     current.length > longest.length ? current : longest
   , sequences[0]);
 
@@ -181,7 +184,7 @@ export function convertTable(tableData: ISAStudyJSONSchema | ISAAssayJSONSchema)
   if (sequences.length === 0) return '';
 
   // 1. Identify the longest sequence structure to define our column architecture
-  const longestSequence = sequences.reduce((longest, current) => 
+  const longestSequence = sequences.reduce((longest, current) =>
     current.length > longest.length ? current : longest
   , sequences[0]);
 

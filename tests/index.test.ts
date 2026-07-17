@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+// SPDX-License-Identifier: ISC
+
 import { describe, it, expect } from 'vitest';
 import JSZip from 'jszip';
 import { convertIsaJsonToZip } from '../src/index.js';
@@ -37,7 +40,7 @@ describe('convertIsaJsonToZip() Entry Point', () => {
 
     // Read it back via JSZip to verify the internal file structure
     const loadedZip = await JSZip.loadAsync(zipBuffer);
-    
+
     expect(loadedZip.files).toHaveProperty('i_investigation.txt');
     expect(loadedZip.files).toHaveProperty('s_study_beta.txt');
     expect(loadedZip.files).toHaveProperty('a_transcriptomics.txt');

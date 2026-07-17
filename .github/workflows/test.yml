@@ -1,4 +1,6 @@
-# .github/workflows/test.yml
+# SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+# SPDX-License-Identifier: CC-BY-4.0
+
 name: Run Tests
 
 on:

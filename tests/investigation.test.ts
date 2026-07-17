@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+// SPDX-License-Identifier: ISC
+
 import { describe, it, expect } from 'vitest';
 import { convertInvestigation, transposeSection, extractValue } from '../src/mappers/investigation.js';
 import { ISAInvestigationSchema } from '../src/types/isa.js';
@@ -108,9 +111,9 @@ describe('Investigation Mapper Unit Tests', () => {
           { name: "NCBITaxon", file: "ncbi.owl" }
         ],
         publications: [
-          { 
-            doi: "10.1234/parent", 
-            title: "Investigation Paper", 
+          {
+            doi: "10.1234/parent",
+            title: "Investigation Paper",
             authorList: "Author A",
             status: {
               annotationValue: "published",
@@ -120,12 +123,12 @@ describe('Investigation Mapper Unit Tests', () => {
           }
         ],
         people: [
-          { 
-            lastName: "Einstein", 
-            firstName: "Albert", 
+          {
+            lastName: "Einstein",
+            firstName: "Albert",
             affiliation: "Princeton",
             roles: [
-              { 
+              {
                 annotationValue: "principal investigator",
                 termAccession: "MS:1000582",
                 termSource: "PSI-MS"
@@ -148,16 +151,16 @@ describe('Investigation Mapper Unit Tests', () => {
               { factorName: "Temperature", factorType: { annotationValue: "physical quality" } }
             ],
             assays: [
-              { 
-                filename: "a_metabolomics.txt", 
+              {
+                filename: "a_metabolomics.txt",
                 measurementType: { annotationValue: "metabolite profiling" },
                 technologyType: { annotationValue: "mass spectrometry" },
                 technologyPlatform: "Orbitrap"
               }
             ],
             protocols: [
-              { 
-                name: "extraction_01", 
+              {
+                name: "extraction_01",
                 protocolType: { annotationValue: "sample extraction" },
                 description: "Methanol extraction process",
                 uri: "http://protocols.io/ext",
@@ -184,13 +187,13 @@ describe('Investigation Mapper Unit Tests', () => {
               }
             ],
             people: [
-              { 
-                lastName: "Franklin", 
-                firstName: "Rosalind", 
-                email: "rosalind@example.com", 
+              {
+                lastName: "Franklin",
+                firstName: "Rosalind",
+                email: "rosalind@example.com",
                 affiliation: "King's College",
                 roles: [
-                  { 
+                  {
                     annotationValue: "co-investigator",
                     termAccession: "MS:1000583",
                     termSource: "PSI-MS"

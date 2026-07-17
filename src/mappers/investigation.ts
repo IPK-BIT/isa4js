@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+// SPDX-License-Identifier: ISC
+
 import { ISAInvestigationSchema } from '../types/isa.js';
 
 /**
@@ -59,7 +62,7 @@ export function transposeSection(
         return val !== undefined && val !== null && val !== '' ? `"${val}"` : '""';
       })
       .join('\t');
-    
+
     return `${sectionHeader} ${field.tabLabel}\t${values}`;
   }).join('\n');
 }
@@ -135,7 +138,7 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
       sections.push(`Study Submission Date\t"${study.submissionDate || ''}"`);
       sections.push(`Study Public Release Date\t"${study.publicReleaseDate || ''}"`);
       sections.push(`Study File Name\t"s_${study.identifier || `study_${index}`}.txt"`);
-      
+
       // 5.2 Study Design Descriptors
       sections.push('STUDY DESIGN DESCRIPTORS');
       sections.push(transposeSection('Study Design', study.studyDesignDescriptors, [
@@ -143,7 +146,7 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
         { jsonKey: 'annotationValue', tabLabel: 'Type Term Accesion Number' },
         { jsonKey: 'annotationValue', tabLabel: 'Type Term Source REF' }
       ]));
-      
+
       // 5.3 Study Publications
       sections.push('STUDY PUBLICATIONS');
       sections.push(transposeSection('Study Publication', study.publications, [
@@ -155,7 +158,7 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
         { jsonKey: 'status.termAccession', tabLabel: 'Status Term Accession Number' },
         { jsonKey: 'status.termSource', tabLabel: 'Status Term Source REF' }
       ]));
-      
+
       // 5.4 Study Factors (Corrected to 'factorName' for ISA-JSON compatibility)
       sections.push('STUDY FACTORS');
       sections.push(transposeSection('Study Factor', study.factors, [
@@ -164,7 +167,7 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
         { jsonKey: 'factorType.termAccession', tabLabel: 'Type Term Accession Number' },
         { jsonKey: 'factorType.termSource', tabLabel: 'Type Term Source REF' }
       ]));
-      
+
       // 5.5 Study Assays
       sections.push('STUDY ASSAYS');
       sections.push(transposeSection('Study Assay', study.assays, [
@@ -177,7 +180,7 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
         { jsonKey: 'technologyType.termSource', tabLabel: 'Technology Type Term Source REF' },
         { jsonKey: 'technologyPlatform', tabLabel: 'Technology Platform' }
       ]));
-      
+
       // 5.6 Study Protocols
       sections.push('STUDY PROTOCOLS');
       sections.push(transposeSection('Study Protocol', study.protocols, [
@@ -196,7 +199,7 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
         { jsonKey: 'components.componentType.termAccession', tabLabel: 'Components Type Term Accession Number' },
         { jsonKey: 'components.componentType.termSource', tabLabel: 'Components Type Term Source REF' }
       ]));
-      
+
       // 5.7 Study Contacts
       sections.push('STUDY CONTACTS');
       sections.push(transposeSection('Study Person', study.people, [

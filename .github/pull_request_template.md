@@ -1,3 +1,7 @@
+<!--
+SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+SPDX-License-Identifier: CC-BY-4.0
+-->
 ## Description
 <!-- Please include a summary of the changes and the related issue/bug. Include relevant motivation and context. -->
 

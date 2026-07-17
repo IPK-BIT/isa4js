@@ -1,6 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+SPDX-License-Identifier: CC-BY-4.0
+-->
 # Contributing to isa4j
 
-First off, thank you for taking the time to contribute! 🎉 
+First off, thank you for taking the time to contribute! 🎉
 
 This project aims to bridge the gap between rich ISA-JSON models and legacy ISA-Tab spreadsheets with high fidelity. We love pull requests, bug reports, and suggestions.
 
@@ -31,7 +35,7 @@ We use `pnpm` to manage dependencies and `vitest` for fast, reactive unit testin
    pnpm run test
    ```
 
-## Project Structure 
+## Project Structure
 
 - `src/mappers/investigation.ts`: Handles metadata parsing for the Investigation sheet.
 - `src/utils/graph.ts`: Contains the FlowGraph DAG parser. It is responsible for identifying root and leaf nodes and tracing correct paths.
@@ -56,14 +60,14 @@ The `FlowGraph` must classify material nodes based on where they are declared in
 
 ## Submitting a Pull Request
 
-1. **Create a branch** for your work: 
+1. **Create a branch** for your work:
     ```bash
-    git checkout -b feature/my-new-feature 
-    # or 
+    git checkout -b feature/my-new-feature
+    # or
     git checkout -b fix/bug-description
     ```
 1. **Write tests** covering any new behavior in `tests/`.
-1. **Verify all tests pass** locally: 
+1. **Verify all tests pass** locally:
     ```bash
     pnpm exec vitest run
     ```
@@ -78,7 +82,7 @@ The `FlowGraph` must classify material nodes based on where they are declared in
         Research (IPK) Gatersleben
         orcid: 'https://orcid.org/0000-0001-6546-1818'
    ```
-1. **Commit your changes** using clean commit messages: 
+1. **Commit your changes** using clean commit messages:
     ```bash
     git commit -m "feat: add support for factor values"
     ```

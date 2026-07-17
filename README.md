@@ -1,12 +1,17 @@
+<!--
+SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+SPDX-License-Identifier: CC-BY-4.0
+-->
 # isa4js
 
 [![CI Tests](https://github.com/ipk-bit/isa4js/actions/workflows/test.yml/badge.svg)](https://github.com/ipk-bit/isa4js/actions)
 [![License](https://img.shields.io/github/license/ipk-bit/isa4js?color=blue)](LICENSE)
 [![pnpm Version](https://img.shields.io/badge/pnpm-%3E%3D_11.5.1-f69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
 [![Vitest Tested](https://img.shields.io/badge/tested_with-vitest-76b5c5?logo=vitest&logoColor=white)](https://vitest.dev/)
+[![REUSE status](https://api.reuse.software/badge/github.com/ipk-bit/isa4js)](https://api.reuse.software/info/github.com/ipk-bit/isa4js)
 <!-- [![NPM Version](https://img.shields.io/npm/v/isa4js?color=33cd56&logo=npm)](https://www.npmjs.com/package/isa4js) -->
 
-A robust, lightweight TypeScript library that converts complex **ISA-JSON** structures into flat, standard **ISA-Tab** files. 
+A robust, lightweight TypeScript library that converts complex **ISA-JSON** structures into flat, standard **ISA-Tab** files.
 
 Unlike simple row-by-row mappers, this tool reconstructs experimental workflows by tracing a Directed Acyclic Graph (DAG) from root nodes to leaf nodes, generating highly accurate tabular metadata matrices.
 

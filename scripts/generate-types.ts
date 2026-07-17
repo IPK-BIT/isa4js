@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+// SPDX-License-Identifier: ISC
+
 import { compileFromFile } from 'json-schema-to-typescript';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -17,13 +20,23 @@ async function generateTypes() {
     const ts = await compileFromFile(schemaPath, {
       cwd: path.resolve(__dirname, '../schemas'), // Resolve references in schemas/
       declareExternallyReferenced: true,          // Inline child references
-      bannerComment: `/* eslint-disable */\n/**\n * This file was automatically generated.\n * DO NOT MODIFY IT BY HAND. Run "npm run generate-types" instead.\n */`
+      bannerComment: [
+        '// SPDX-File' + 'CopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>',
+        '//',
+        '// SPDX-License-' + 'Identifier: ISC',
+        '',
+        '/* eslint-disable */',
+        '/**',
+        ' * This file was automatically generated.',
+        ' * DO NOT MODIFY IT BY HAND. Run "pnpm run generate-types" instead.',
+        ' */'
+      ].join('\n')
     });
 
     // Ensure types folder exists
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, ts);
-    
+
     console.log(`Successfully generated types at: ${outputPath}`);
   } catch (error) {
     console.error('Failed to generate types:', error);
