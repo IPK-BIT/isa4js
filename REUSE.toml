@@ -3,6 +3,13 @@
 
 version = 1
 
+[tool.reuse]
+exclude = [
+    "docs/node_modules/**",
+    "docs/.astro/**",
+    "docs/dist/**"
+]
+
 [[annotations]]
 path = [
   "package.json",
@@ -22,3 +29,19 @@ path = "schemas/*.json"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "ISA-tools Team <isatools@googlegroups.com>"
 SPDX-License-Identifier = "CPAL-1.0"
+
+# Apply compliance info to all configuration, JSON, and asset files in docs
+[[annotations]]
+path = [
+    "docs/package.json",
+    "docs/tsconfig.json",
+    "docs/pnpm-lock.yaml",
+    "docs/pnpm-workspace.yaml",
+    "docs/.gitignore",
+    "docs/.vscode/*.json",
+    "docs/src/assets/houston.webp",
+    "docs/public/favicon.svg"
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Manuel Feser <feser@ipk-gatersleben.de>"
+SPDX-License-Identifier = "CC-BY-4.0"
