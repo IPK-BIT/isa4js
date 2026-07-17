@@ -1,3 +1,4 @@
+# .github/workflows/test.yml
 name: Run Tests
 
 on:
@@ -17,13 +18,13 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9 # Matches your local pnpm major version
+          version: 11 # Aligned with your package.json "^11.5.1" requirement
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm' # Automatically caches dependencies for faster runs
+          node-version: 24 # Upgraded to match standard modern GitHub runners
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
