@@ -1,0 +1,27 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: isa4js
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Manuel
+    family-names: Feser
+    email: feser@ipk-gatersleben.de
+    affiliation: >-
+      Leibniz Institute of Plant Genetics and Crop Plant
+      Research (IPK) Gatersleben
+    orcid: 'https://orcid.org/0000-0001-6546-1818'
+repository-code: 'https://github.com/ipk-bit/isa4js'
+abstract: >-
+  A robust, lightweight TypeScript library that converts
+  complex ISA-JSON structures into flat, standard ISA-Tab
+  files. 
+keywords:
+  - ISA
+  - Converter
+  - Life Science
+license: ISC

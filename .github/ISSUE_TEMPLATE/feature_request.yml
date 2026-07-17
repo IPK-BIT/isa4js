@@ -1,0 +1,56 @@
+name: "✨ Feature Request"
+description: Propose a new conversion mapping, tool feature, or workflow improvement
+title: "[FEATURE]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea to improve the isa4js? We'd love to hear it!
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Is your feature request related to a problem or limitation? Please describe.
+      placeholder: I am frustrated because the current mapper doesn't support...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: A clear and concise description of what you want to happen.
+      placeholder: The mapper should look up custom factor values and...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-mapping
+    attributes:
+      label: Target Layout Examples
+      description: Show us what the input ISA-JSON looks like and your desired target ISA-Tab layout.
+      placeholder: |
+        ### Target ISA-Tab Layout:
+        Sample Name | Protocol REF | Factor Value [My New Factor]
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative solutions or workarounds you've tried or considered.
+      placeholder: I tried to manually post-process the TSV rows, but...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: contributions
+    attributes:
+      label: Contribution
+      options:
+        - label: I would be willing to submit a Pull Request to implement this feature myself!
+          required: false
