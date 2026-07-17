@@ -1,43 +1,56 @@
 ---
 # SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+#
 # SPDX-License-Identifier: CC-BY-4.0
 
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: isa4js Documentation
+description: Programmatic validation, parsing, and management of ISA-Tab and ISA-JSON metadata profiles in JavaScript and TypeScript.
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: Powerful tools for converting, validating, and building ISA-Tab and ISA-JSON experimental metadata frameworks in JavaScript and TypeScript.
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/isa4js.png
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Get Started
+      link: /guides/install/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+      variant: primary
+    - text: View GitHub Repository
+      link: https://github.com/ipk-bit/isa4js
       icon: external
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+## Core Capabilities
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="ISA-JSON to ISA-Tab Conversion" icon="document">
+		Transform structured ISA-JSON objects or files directly into compliant tab-separated investigation, study, and assay files.
 	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
+	<Card title="ZIP Archive Generation" icon="setting">
+		Bundle your converted ISA-Tab matrices automatically into a single, compressed `.zip` distribution ready for sharing or upload.
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="Full TypeScript Safety" icon="pencil">
+		Develop with absolute certainty using comprehensive, auto-generated type definitions matching your metadata models.
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="Runtime Agnostic" icon="open-book">
+		Runs seamlessly across modern environments including Node.js, Bun, and directly within the browser.
 	</Card>
 </CardGrid>
+
+---
+
+## Quick Example
+
+Convert your ISA-JSON datasets into standardized formats instantly:
+
+```typescript
+import { convertIsaJsonToIsaTab, convertIsaJsonToZip } from 'isa4js';
+
+// 1. Convert ISA-JSON data directly to standard ISA-Tab strings
+const isaTabResult = convertIsaJsonToIsaTab(isaJsonData);
+
+// 2. Or compile the entire ISA-Tab set straight into a compressed ZIP blob/buffer
+const zipArchive = await convertIsaJsonToZip(isaJsonData);

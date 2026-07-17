@@ -40,7 +40,9 @@ path = [
     "docs/.gitignore",
     "docs/.vscode/*.json",
     "docs/src/assets/houston.webp",
-    "docs/public/favicon.svg"
+    "docs/public/*.svg",
+    "docs/src/assets/*.png",
+    "docs/typedoc.json"
 ]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Manuel Feser <feser@ipk-gatersleben.de>"
