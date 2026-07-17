@@ -1,9 +1,7 @@
-<!--
-SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
-
-SPDX-License-Identifier: CC-BY-4.0
--->
 ---
+# SPDX-FileCopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>
+# SPDX-License-Identifier: CC-BY-4.0
+
 title: Example Reference
 description: A reference page in my new Starlight docs site.
 ---
