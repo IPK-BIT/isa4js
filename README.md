@@ -1,5 +1,11 @@
 # isa4js
 
+[![CI Tests](https://github.com/ipk-bit/isa4js/actions/workflows/test.yml/badge.svg)](https://github.com/ipk-bit/isa4js/actions)
+[![License](https://img.shields.io/github/license/ipk-bit/isa4js?color=blue)](LICENSE)
+[![pnpm Version](https://img.shields.io/badge/pnpm-%3E%3D_11.5.1-f69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
+[![Vitest Tested](https://img.shields.io/badge/tested_with-vitest-76b5c5?logo=vitest&logoColor=white)](https://vitest.dev/)
+<!-- [![NPM Version](https://img.shields.io/npm/v/isa4js?color=33cd56&logo=npm)](https://www.npmjs.com/package/isa4js) -->
+
 A robust, lightweight TypeScript library that converts complex **ISA-JSON** structures into flat, standard **ISA-Tab** files. 
 
 Unlike simple row-by-row mappers, this tool reconstructs experimental workflows by tracing a Directed Acyclic Graph (DAG) from root nodes to leaf nodes, generating highly accurate tabular metadata matrices.
@@ -8,11 +14,11 @@ Unlike simple row-by-row mappers, this tool reconstructs experimental workflows 
 
 ## Features
 
-* 📊 **Investigation Mapping**: Full conversion of vertical ISA-JSON investigation metadata into standard `i_investigation.txt` files.
-* 🌿 **Graph-Based Table Mapping**: Uses a custom FlowGraph traversal utility to map nonlinear `processSequence` nodes dynamically into tabular Study (`s_*.txt`) and Assay (`a_*.txt`) matrices.
-* 🔗 **Ontology Integration**: Automatic alignment of `Characteristics [...]` and `Parameter Value [...]` alongside their corresponding `Term Accession Number` and `Term Source REF` columns.
-* 📦 **Flexible Packaging**: Convert payloads directly to an in-memory dictionary of TSV string files or export them directly into a compressed ZIP file (`JSZip`).
-* ⚡ **High Performance & Type-Safe**: Fully typed ESM build developed using TypeScript, `pnpm`, and tested with `vitest`.
+* **Investigation Mapping**: Full conversion of vertical ISA-JSON investigation metadata into standard `i_investigation.txt` files.
+* **Graph-Based Table Mapping**: Uses a custom FlowGraph traversal utility to map nonlinear `processSequence` nodes dynamically into tabular Study (`s_*.txt`) and Assay (`a_*.txt`) matrices.
+* **Ontology Integration**: Automatic alignment of `Characteristics [...]` and `Parameter Value [...]` alongside their corresponding `Term Accession Number` and `Term Source REF` columns.
+* **Flexible Packaging**: Convert payloads directly to an in-memory dictionary of TSV string files or export them directly into a compressed ZIP file (`JSZip`).
+* **Type-Safe**: Fully typed ESM build developed using TypeScript, `pnpm`, and tested with `vitest`.
 
 ---
 
