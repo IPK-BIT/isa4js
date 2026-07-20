@@ -13,7 +13,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 > **convertIsaJsonToZip**(`isaJson`, `type?`): `Promise`\<`Blob` \| `Uint8Array`\<`ArrayBufferLike`\> \| `Buffer`\<`ArrayBufferLike`\>\>
 
-Defined in: [index.ts:53](https://github.com/IPK-BIT/isa4js/blob/523e1fde0987435c58a7b20ad4d6ec6bfb58d4ce/src/index.ts#L53)
+Defined in: [index.ts:54](https://github.com/IPK-BIT/isa4js/blob/main/src/index.ts#L54)
 
 Converts a complete ISA-JSON structure into a single ZIP archive containing the ISA-Tab files.
 
@@ -21,7 +21,7 @@ Converts a complete ISA-JSON structure into a single ZIP archive containing the 
 
 ### isaJson
 
-`ISAInvestigationSchema`
+[`ISAInvestigationSchema`](/api/interfaces/isainvestigationschema/)
 
 The parsed ISA-JSON Investigation object.
 

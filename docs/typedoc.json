@@ -1,4 +1,5 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "plugin": ["./typedoc-reuse-plugin.js"]
+  "plugin": ["./typedoc-reuse-plugin.js"],
+  "gitRevision": "main"
 }

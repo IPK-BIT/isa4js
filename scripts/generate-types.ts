@@ -6,9 +6,15 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
 
-// Recreate __dirname for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Helper to convert strings like "ISA Comment schema" -> "ISACommentSchema"
+function toPascalCase(str: string) {
+  return str
+    .replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase())
+    .replace(/^[a-z]/, (chr) => chr.toUpperCase());
+}
 
 async function generateTypes() {
   const schemaPath = path.resolve(__dirname, '../schemas/investigation_schema.json');
@@ -18,8 +24,19 @@ async function generateTypes() {
 
   try {
     const ts = await compileFromFile(schemaPath, {
-      cwd: path.resolve(__dirname, '../schemas'), // Resolve references in schemas/
-      declareExternallyReferenced: true,          // Inline child references
+      cwd: path.resolve(__dirname, '../schemas'),
+      declareExternallyReferenced: true,
+      // Custom naming rule to favor `name` over verbose `title`
+      customName: (schema) => {
+        if (schema.name) {
+          return toPascalCase(schema.name);
+        }
+        // Fallback: strip descriptive suffixes from title if name isn't set
+        if (schema.title) {
+          const cleanTitle = schema.title.split('-')[0].trim();
+          return toPascalCase(cleanTitle);
+        }
+      },
       bannerComment: [
         '// SPDX-File' + 'CopyrightText: 2026 Manuel Feser <feser@ipk-gatersleben.de>',
         '//',
@@ -33,7 +50,6 @@ async function generateTypes() {
       ].join('\n')
     });
 
-    // Ensure types folder exists
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, ts);
 

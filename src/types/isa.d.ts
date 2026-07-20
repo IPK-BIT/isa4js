@@ -25,7 +25,7 @@ export interface ISAInvestigationSchema {
   publications?: ISAPublicationSchema[];
   people?: ISAPersonSchema[];
   studies?: ISAStudyJSONSchema[];
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing an ISA model ontology reference object
@@ -34,7 +34,7 @@ export interface ISAOntologySourceReferenceSchema {
   "@id"?: string;
   "@context"?: string;
   "@type"?: "OntologySourceReference";
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
   description?: string;
   file?: string;
   name?: string;
@@ -43,7 +43,7 @@ export interface ISAOntologySourceReferenceSchema {
 /**
  * JSON-schema representing an ISA model Comment object
  */
-export interface ISACommentSchemaItCorrespondsToISACommentConstruct {
+export interface ISACommentSchema {
   "@id"?: string;
   "@context"?: string;
   "@type"?: "Comment";
@@ -62,7 +62,7 @@ export interface ISAPublicationSchema {
   authorList?: string;
   title?: string;
   status?: ISAOntologyReferenceSchema;
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing an ISA model Ontology Reference or annotation (for fields that are required to be ontology annotations)
@@ -77,7 +77,7 @@ export interface ISAOntologyReferenceSchema {
    */
   termSource?: string;
   termAccession?: string;
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing an ISA model Person Object
@@ -95,7 +95,7 @@ export interface ISAPersonSchema {
   address?: string;
   affiliation?: string;
   roles?: ISAOntologyReferenceSchema[];
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON Schema describing an ISA model Study object
@@ -120,18 +120,18 @@ export interface ISAStudyJSONSchema {
     otherMaterials?: ISAMaterialSchema[];
     [k: string]: unknown;
   };
-  processSequence?: ISAProcessOrProtocolApplicationSchemaCorrespondsToProtocolREFColumnsInTheStudyAndAssayFiles[];
+  processSequence?: ISAProcessSchema[];
   assays?: ISAAssayJSONSchema[];
   factors?: ISAFactorSchema[];
   /**
    * List of all the characteristics categories (or material attributes) defined in the study, used to avoid duplication of their declaration when each material_attribute_value is created.
    */
-  characteristicCategories?: ISAMaterialAttributeSchema1[];
+  characteristicCategories?: ISAMaterialAttributeSchema[];
   /**
    * List of all the units defined in the study, used to avoid duplication of their declaration when each value is created.
    */
   unitCategories?: ISAOntologyReferenceSchema[];
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing an ISA model Protocol object
@@ -149,10 +149,10 @@ export interface ISAProtocolSchema {
   components?: {
     componentName?: string;
     componentType?: ISAOntologyReferenceSchema;
-    comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+    comments?: ISACommentSchema[];
     [k: string]: unknown;
   }[];
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing an ISA model Protocol Parameter parameter object (i.e. category declared in the investigation file)
@@ -162,7 +162,7 @@ export interface ISAProtocolParameterSchema {
   "@context"?: string;
   "@type"?: "ProtocolParameter";
   parameterName?: ISAOntologyReferenceSchema;
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing an ISA model Source object (Sources are considered as the starting biological material used in a study)
@@ -172,25 +172,25 @@ export interface ISASourceSchema {
   "@context"?: string;
   "@type"?: "Source";
   name?: string;
-  characteristics?: ISAMaterialAttributeSchema[];
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  characteristics?: ISAMaterialAttributeValueSchema[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing an ISA model material attribute (or characteristic) value object
  */
-export interface ISAMaterialAttributeSchema {
+export interface ISAMaterialAttributeValueSchema {
   "@id"?: string;
   "@context"?: string;
   "@type"?: "MaterialAttributeValue";
-  category?: ISAMaterialAttributeSchema1;
+  category?: ISAMaterialAttributeSchema;
   value?: ISAOntologyReferenceSchema | string | number;
   unit?: ISAOntologyReferenceSchema;
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing a characteristics category (what appears between the brackets in Characteristics[]) in the ISA model
  */
-export interface ISAMaterialAttributeSchema1 {
+export interface ISAMaterialAttributeSchema {
   "@id"?: string;
   "@context"?: string;
   "@type"?: "MaterialAttribute";
@@ -204,10 +204,10 @@ export interface ISASampleSchema {
   "@context"?: string;
   "@type"?: "Sample";
   name?: string;
-  characteristics?: ISAMaterialAttributeSchema[];
+  characteristics?: ISAMaterialAttributeValueSchema[];
   factorValues?: ISAFactorValueSchema[];
   derivesFrom?: ISASourceSchema[];
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing an ISA model Factor Value object
@@ -219,7 +219,7 @@ export interface ISAFactorValueSchema {
   category?: ISAFactorSchema;
   value?: ISAOntologyReferenceSchema | string | number;
   unit?: ISAOntologyReferenceSchema;
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing an ISA model Factor object
@@ -230,7 +230,7 @@ export interface ISAFactorSchema {
   "@type"?: "Factor";
   factorName?: string;
   factorType?: ISAOntologyReferenceSchema;
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing an ISA model material object, which is not a source or a sample (as they have specific schemas) - this will correspond to 'Extract Name', 'Labeled Extract Name'
@@ -241,13 +241,13 @@ export interface ISAMaterialSchema {
   "@type"?: "Material";
   name?: string;
   type?: "Extract Name" | "Labeled Extract Name";
-  characteristics?: ISAMaterialAttributeSchema[];
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  characteristics?: ISAMaterialAttributeValueSchema[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing an ISA model Process (protocol application) object
  */
-export interface ISAProcessOrProtocolApplicationSchemaCorrespondsToProtocolREFColumnsInTheStudyAndAssayFiles {
+export interface ISAProcessSchema {
   "@id"?: string;
   "@context"?: string;
   "@type"?: "Process";
@@ -256,11 +256,11 @@ export interface ISAProcessOrProtocolApplicationSchemaCorrespondsToProtocolREFCo
   parameterValues?: ISAProcessParameterValueSchema[];
   performer?: string;
   date?: string;
-  previousProcess?: ISAProcessOrProtocolApplicationSchemaCorrespondsToProtocolREFColumnsInTheStudyAndAssayFiles;
-  nextProcess?: ISAProcessOrProtocolApplicationSchemaCorrespondsToProtocolREFColumnsInTheStudyAndAssayFiles;
+  previousProcess?: ISAProcessSchema;
+  nextProcess?: ISAProcessSchema;
   inputs?: (ISASourceSchema | ISASampleSchema | ISADataSchema | ISAMaterialSchema)[];
   outputs?: (ISASampleSchema | ISADataSchema | ISAMaterialSchema)[];
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing an ISA model Parameter Value (associated with a Protocol REF) object
@@ -272,7 +272,7 @@ export interface ISAProcessParameterValueSchema {
   category?: ISAProtocolParameterSchema;
   value?: ISAOntologyReferenceSchema | string | number;
   unit?: ISAOntologyReferenceSchema;
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON-schema representing an ISA model Data object
@@ -298,7 +298,7 @@ export interface ISADataSchema {
     | "Free Induction Decay Data File"
     | "Metabolite Assignment File"
     | "Array Data Matrix File";
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  comments?: ISACommentSchema[];
 }
 /**
  * JSON Schema describing an ISA model Assay object
@@ -320,11 +320,11 @@ export interface ISAAssayJSONSchema {
   /**
    * List of all the characteristics categories (or material attributes) defined in the study, used to avoid duplication of their declaration when each material_attribute_value is created.
    */
-  characteristicCategories?: ISAMaterialAttributeSchema1[];
+  characteristicCategories?: ISAMaterialAttributeSchema[];
   /**
    * List of all the unitsdefined in the study, used to avoid duplication of their declaration when each value is created.
    */
   unitCategories?: ISAOntologyReferenceSchema[];
-  processSequence?: ISAProcessOrProtocolApplicationSchemaCorrespondsToProtocolREFColumnsInTheStudyAndAssayFiles[];
-  comments?: ISACommentSchemaItCorrespondsToISACommentConstruct[];
+  processSequence?: ISAProcessSchema[];
+  comments?: ISACommentSchema[];
 }
