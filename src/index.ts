@@ -9,7 +9,7 @@ import { convertTable } from './mappers/table.js';
 export interface ISATabFiles {
   [filename: string]: string;
 }
-export * from './types/isa.js';
+export type * from './types/isa.js';
 
 /**
  * Helper to convert ISA-JSON to an in-memory dictionary of file names and content.
