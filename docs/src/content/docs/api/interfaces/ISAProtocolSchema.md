@@ -43,7 +43,7 @@ Defined in: [types/isa.d.ts:142](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### comments?
 
-> `optional` **comments?**: [`ISACommentSchema`](/api/interfaces/isacommentschema/)[]
+> `optional` **comments?**: [`ISACommentSchema`](/isa4js/api/interfaces/isacommentschema/)[]
 
 Defined in: [types/isa.d.ts:155](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L155)
 
@@ -61,7 +61,7 @@ Defined in: [types/isa.d.ts:149](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 #### comments?
 
-> `optional` **comments?**: [`ISACommentSchema`](/api/interfaces/isacommentschema/)[]
+> `optional` **comments?**: [`ISACommentSchema`](/isa4js/api/interfaces/isacommentschema/)[]
 
 #### componentName?
 
@@ -69,7 +69,7 @@ Defined in: [types/isa.d.ts:149](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 #### componentType?
 
-> `optional` **componentType?**: [`ISAOntologyReferenceSchema`](/api/interfaces/isaontologyreferenceschema/)
+> `optional` **componentType?**: [`ISAOntologyReferenceSchema`](/isa4js/api/interfaces/isaontologyreferenceschema/)
 
 ***
 
@@ -91,7 +91,7 @@ Defined in: [types/isa.d.ts:143](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### parameters?
 
-> `optional` **parameters?**: [`ISAProtocolParameterSchema`](/api/interfaces/isaprotocolparameterschema/)[]
+> `optional` **parameters?**: [`ISAProtocolParameterSchema`](/isa4js/api/interfaces/isaprotocolparameterschema/)[]
 
 Defined in: [types/isa.d.ts:148](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L148)
 
@@ -99,7 +99,7 @@ Defined in: [types/isa.d.ts:148](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### protocolType?
 
-> `optional` **protocolType?**: [`ISAOntologyReferenceSchema`](/api/interfaces/isaontologyreferenceschema/)
+> `optional` **protocolType?**: [`ISAOntologyReferenceSchema`](/isa4js/api/interfaces/isaontologyreferenceschema/)
 
 Defined in: [types/isa.d.ts:144](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L144)
 

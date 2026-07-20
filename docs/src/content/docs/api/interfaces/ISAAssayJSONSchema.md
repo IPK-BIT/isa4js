@@ -43,7 +43,7 @@ Defined in: [types/isa.d.ts:309](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### characteristicCategories?
 
-> `optional` **characteristicCategories?**: [`ISAMaterialAttributeSchema`](/api/interfaces/isamaterialattributeschema/)[]
+> `optional` **characteristicCategories?**: [`ISAMaterialAttributeSchema`](/isa4js/api/interfaces/isamaterialattributeschema/)[]
 
 Defined in: [types/isa.d.ts:323](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L323)
 
@@ -53,7 +53,7 @@ List of all the characteristics categories (or material attributes) defined in t
 
 ### comments?
 
-> `optional` **comments?**: [`ISACommentSchema`](/api/interfaces/isacommentschema/)[]
+> `optional` **comments?**: [`ISACommentSchema`](/isa4js/api/interfaces/isacommentschema/)[]
 
 Defined in: [types/isa.d.ts:329](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L329)
 
@@ -61,7 +61,7 @@ Defined in: [types/isa.d.ts:329](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### dataFiles?
 
-> `optional` **dataFiles?**: [`ISADataSchema`](/api/interfaces/isadataschema/)[]
+> `optional` **dataFiles?**: [`ISADataSchema`](/isa4js/api/interfaces/isadataschema/)[]
 
 Defined in: [types/isa.d.ts:314](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L314)
 
@@ -87,17 +87,17 @@ Defined in: [types/isa.d.ts:315](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 #### otherMaterials?
 
-> `optional` **otherMaterials?**: [`ISAMaterialSchema`](/api/interfaces/isamaterialschema/)[]
+> `optional` **otherMaterials?**: [`ISAMaterialSchema`](/isa4js/api/interfaces/isamaterialschema/)[]
 
 #### samples?
 
-> `optional` **samples?**: [`ISASampleSchema`](/api/interfaces/isasampleschema/)[]
+> `optional` **samples?**: [`ISASampleSchema`](/isa4js/api/interfaces/isasampleschema/)[]
 
 ***
 
 ### measurementType?
 
-> `optional` **measurementType?**: [`ISAOntologyReferenceSchema`](/api/interfaces/isaontologyreferenceschema/)
+> `optional` **measurementType?**: [`ISAOntologyReferenceSchema`](/isa4js/api/interfaces/isaontologyreferenceschema/)
 
 Defined in: [types/isa.d.ts:311](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L311)
 
@@ -105,7 +105,7 @@ Defined in: [types/isa.d.ts:311](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### processSequence?
 
-> `optional` **processSequence?**: [`ISAProcessSchema`](/api/interfaces/isaprocessschema/)[]
+> `optional` **processSequence?**: [`ISAProcessSchema`](/isa4js/api/interfaces/isaprocessschema/)[]
 
 Defined in: [types/isa.d.ts:328](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L328)
 
@@ -121,7 +121,7 @@ Defined in: [types/isa.d.ts:313](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### technologyType?
 
-> `optional` **technologyType?**: [`ISAOntologyReferenceSchema`](/api/interfaces/isaontologyreferenceschema/)
+> `optional` **technologyType?**: [`ISAOntologyReferenceSchema`](/isa4js/api/interfaces/isaontologyreferenceschema/)
 
 Defined in: [types/isa.d.ts:312](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L312)
 
@@ -129,7 +129,7 @@ Defined in: [types/isa.d.ts:312](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### unitCategories?
 
-> `optional` **unitCategories?**: [`ISAOntologyReferenceSchema`](/api/interfaces/isaontologyreferenceschema/)[]
+> `optional` **unitCategories?**: [`ISAOntologyReferenceSchema`](/isa4js/api/interfaces/isaontologyreferenceschema/)[]
 
 Defined in: [types/isa.d.ts:327](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L327)
 

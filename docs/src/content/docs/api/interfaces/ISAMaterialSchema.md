@@ -43,7 +43,7 @@ Defined in: [types/isa.d.ts:241](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### characteristics?
 
-> `optional` **characteristics?**: [`ISAMaterialAttributeValueSchema`](/api/interfaces/isamaterialattributevalueschema/)[]
+> `optional` **characteristics?**: [`ISAMaterialAttributeValueSchema`](/isa4js/api/interfaces/isamaterialattributevalueschema/)[]
 
 Defined in: [types/isa.d.ts:244](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L244)
 
@@ -51,7 +51,7 @@ Defined in: [types/isa.d.ts:244](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### comments?
 
-> `optional` **comments?**: [`ISACommentSchema`](/api/interfaces/isacommentschema/)[]
+> `optional` **comments?**: [`ISACommentSchema`](/isa4js/api/interfaces/isacommentschema/)[]
 
 Defined in: [types/isa.d.ts:245](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L245)
 

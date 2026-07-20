@@ -51,7 +51,7 @@ Defined in: [types/isa.d.ts:62](https://github.com/IPK-BIT/isa4js/blob/main/src/
 
 ### comments?
 
-> `optional` **comments?**: [`ISACommentSchema`](/api/interfaces/isacommentschema/)[]
+> `optional` **comments?**: [`ISACommentSchema`](/isa4js/api/interfaces/isacommentschema/)[]
 
 Defined in: [types/isa.d.ts:65](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L65)
 
@@ -75,7 +75,7 @@ Defined in: [types/isa.d.ts:60](https://github.com/IPK-BIT/isa4js/blob/main/src/
 
 ### status?
 
-> `optional` **status?**: [`ISAOntologyReferenceSchema`](/api/interfaces/isaontologyreferenceschema/)
+> `optional` **status?**: [`ISAOntologyReferenceSchema`](/isa4js/api/interfaces/isaontologyreferenceschema/)
 
 Defined in: [types/isa.d.ts:64](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L64)
 

@@ -43,7 +43,7 @@ Defined in: [types/isa.d.ts:17](https://github.com/IPK-BIT/isa4js/blob/main/src/
 
 ### comments?
 
-> `optional` **comments?**: [`ISACommentSchema`](/api/interfaces/isacommentschema/)[]
+> `optional` **comments?**: [`ISACommentSchema`](/isa4js/api/interfaces/isacommentschema/)[]
 
 Defined in: [types/isa.d.ts:28](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L28)
 
@@ -75,7 +75,7 @@ Defined in: [types/isa.d.ts:19](https://github.com/IPK-BIT/isa4js/blob/main/src/
 
 ### ontologySourceReferences?
 
-> `optional` **ontologySourceReferences?**: [`ISAOntologySourceReferenceSchema`](/api/interfaces/isaontologysourcereferenceschema/)[]
+> `optional` **ontologySourceReferences?**: [`ISAOntologySourceReferenceSchema`](/isa4js/api/interfaces/isaontologysourcereferenceschema/)[]
 
 Defined in: [types/isa.d.ts:24](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L24)
 
@@ -83,7 +83,7 @@ Defined in: [types/isa.d.ts:24](https://github.com/IPK-BIT/isa4js/blob/main/src/
 
 ### people?
 
-> `optional` **people?**: [`ISAPersonSchema`](/api/interfaces/isapersonschema/)[]
+> `optional` **people?**: [`ISAPersonSchema`](/isa4js/api/interfaces/isapersonschema/)[]
 
 Defined in: [types/isa.d.ts:26](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L26)
 
@@ -91,7 +91,7 @@ Defined in: [types/isa.d.ts:26](https://github.com/IPK-BIT/isa4js/blob/main/src/
 
 ### publications?
 
-> `optional` **publications?**: [`ISAPublicationSchema`](/api/interfaces/isapublicationschema/)[]
+> `optional` **publications?**: [`ISAPublicationSchema`](/isa4js/api/interfaces/isapublicationschema/)[]
 
 Defined in: [types/isa.d.ts:25](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L25)
 
@@ -107,7 +107,7 @@ Defined in: [types/isa.d.ts:23](https://github.com/IPK-BIT/isa4js/blob/main/src/
 
 ### studies?
 
-> `optional` **studies?**: [`ISAStudyJSONSchema`](/api/interfaces/isastudyjsonschema/)[]
+> `optional` **studies?**: [`ISAStudyJSONSchema`](/isa4js/api/interfaces/isastudyjsonschema/)[]
 
 Defined in: [types/isa.d.ts:27](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L27)
 

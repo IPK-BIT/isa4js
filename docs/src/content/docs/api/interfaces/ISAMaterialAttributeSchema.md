@@ -43,6 +43,6 @@ Defined in: [types/isa.d.ts:196](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### characteristicType?
 
-> `optional` **characteristicType?**: [`ISAOntologyReferenceSchema`](/api/interfaces/isaontologyreferenceschema/)
+> `optional` **characteristicType?**: [`ISAOntologyReferenceSchema`](/isa4js/api/interfaces/isaontologyreferenceschema/)
 
 Defined in: [types/isa.d.ts:197](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L197)

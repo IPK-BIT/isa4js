@@ -21,7 +21,7 @@ Converts a complete ISA-JSON structure into a single ZIP archive containing the 
 
 ### isaJson
 
-[`ISAInvestigationSchema`](/api/interfaces/isainvestigationschema/)
+[`ISAInvestigationSchema`](/isa4js/api/interfaces/isainvestigationschema/)
 
 The parsed ISA-JSON Investigation object.
 

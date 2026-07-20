@@ -51,7 +51,7 @@ Defined in: [types/isa.d.ts:74](https://github.com/IPK-BIT/isa4js/blob/main/src/
 
 ### comments?
 
-> `optional` **comments?**: [`ISACommentSchema`](/api/interfaces/isacommentschema/)[]
+> `optional` **comments?**: [`ISACommentSchema`](/isa4js/api/interfaces/isacommentschema/)[]
 
 Defined in: [types/isa.d.ts:80](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L80)
 

@@ -7,9 +7,10 @@ import starlight from '@astrojs/starlight';
 import starlightTypeDoc, { typeDocSidebarGroup } from 'starlight-typedoc';
 
 export default defineConfig({
+  base: '/isa4js',
   integrations: [
     starlight({
-      title: 'isa4js Documentation',
+      title: 'isa4js',
       social: [
 		    { icon: 'github', href: 'https://github.com/ipk-bit/isa4js', label: 'GitHub' },
 	    ],

@@ -43,7 +43,7 @@ Defined in: [types/isa.d.ts:283](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### comments?
 
-> `optional` **comments?**: [`ISACommentSchema`](/api/interfaces/isacommentschema/)[]
+> `optional` **comments?**: [`ISACommentSchema`](/isa4js/api/interfaces/isacommentschema/)[]
 
 Defined in: [types/isa.d.ts:301](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L301)
 

@@ -43,7 +43,7 @@ Defined in: [types/isa.d.ts:106](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### assays?
 
-> `optional` **assays?**: [`ISAAssayJSONSchema`](/api/interfaces/isaassayjsonschema/)[]
+> `optional` **assays?**: [`ISAAssayJSONSchema`](/isa4js/api/interfaces/isaassayjsonschema/)[]
 
 Defined in: [types/isa.d.ts:124](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L124)
 
@@ -51,7 +51,7 @@ Defined in: [types/isa.d.ts:124](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### characteristicCategories?
 
-> `optional` **characteristicCategories?**: [`ISAMaterialAttributeSchema`](/api/interfaces/isamaterialattributeschema/)[]
+> `optional` **characteristicCategories?**: [`ISAMaterialAttributeSchema`](/isa4js/api/interfaces/isamaterialattributeschema/)[]
 
 Defined in: [types/isa.d.ts:129](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L129)
 
@@ -61,7 +61,7 @@ List of all the characteristics categories (or material attributes) defined in t
 
 ### comments?
 
-> `optional` **comments?**: [`ISACommentSchema`](/api/interfaces/isacommentschema/)[]
+> `optional` **comments?**: [`ISACommentSchema`](/isa4js/api/interfaces/isacommentschema/)[]
 
 Defined in: [types/isa.d.ts:134](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L134)
 
@@ -77,7 +77,7 @@ Defined in: [types/isa.d.ts:110](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### factors?
 
-> `optional` **factors?**: [`ISAFactorSchema`](/api/interfaces/isafactorschema/)[]
+> `optional` **factors?**: [`ISAFactorSchema`](/isa4js/api/interfaces/isafactorschema/)[]
 
 Defined in: [types/isa.d.ts:125](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L125)
 
@@ -111,21 +111,21 @@ Defined in: [types/isa.d.ts:117](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 #### otherMaterials?
 
-> `optional` **otherMaterials?**: [`ISAMaterialSchema`](/api/interfaces/isamaterialschema/)[]
+> `optional` **otherMaterials?**: [`ISAMaterialSchema`](/isa4js/api/interfaces/isamaterialschema/)[]
 
 #### samples?
 
-> `optional` **samples?**: [`ISASampleSchema`](/api/interfaces/isasampleschema/)[]
+> `optional` **samples?**: [`ISASampleSchema`](/isa4js/api/interfaces/isasampleschema/)[]
 
 #### sources?
 
-> `optional` **sources?**: [`ISASourceSchema`](/api/interfaces/isasourceschema/)[]
+> `optional` **sources?**: [`ISASourceSchema`](/isa4js/api/interfaces/isasourceschema/)[]
 
 ***
 
 ### people?
 
-> `optional` **people?**: [`ISAPersonSchema`](/api/interfaces/isapersonschema/)[]
+> `optional` **people?**: [`ISAPersonSchema`](/isa4js/api/interfaces/isapersonschema/)[]
 
 Defined in: [types/isa.d.ts:114](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L114)
 
@@ -133,7 +133,7 @@ Defined in: [types/isa.d.ts:114](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### processSequence?
 
-> `optional` **processSequence?**: [`ISAProcessSchema`](/api/interfaces/isaprocessschema/)[]
+> `optional` **processSequence?**: [`ISAProcessSchema`](/isa4js/api/interfaces/isaprocessschema/)[]
 
 Defined in: [types/isa.d.ts:123](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L123)
 
@@ -141,7 +141,7 @@ Defined in: [types/isa.d.ts:123](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### protocols?
 
-> `optional` **protocols?**: [`ISAProtocolSchema`](/api/interfaces/isaprotocolschema/)[]
+> `optional` **protocols?**: [`ISAProtocolSchema`](/isa4js/api/interfaces/isaprotocolschema/)[]
 
 Defined in: [types/isa.d.ts:116](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L116)
 
@@ -149,7 +149,7 @@ Defined in: [types/isa.d.ts:116](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### publications?
 
-> `optional` **publications?**: [`ISAPublicationSchema`](/api/interfaces/isapublicationschema/)[]
+> `optional` **publications?**: [`ISAPublicationSchema`](/isa4js/api/interfaces/isapublicationschema/)[]
 
 Defined in: [types/isa.d.ts:113](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L113)
 
@@ -165,7 +165,7 @@ Defined in: [types/isa.d.ts:112](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### studyDesignDescriptors?
 
-> `optional` **studyDesignDescriptors?**: [`ISAOntologyReferenceSchema`](/api/interfaces/isaontologyreferenceschema/)[]
+> `optional` **studyDesignDescriptors?**: [`ISAOntologyReferenceSchema`](/isa4js/api/interfaces/isaontologyreferenceschema/)[]
 
 Defined in: [types/isa.d.ts:115](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L115)
 
@@ -189,7 +189,7 @@ Defined in: [types/isa.d.ts:109](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### unitCategories?
 
-> `optional` **unitCategories?**: [`ISAOntologyReferenceSchema`](/api/interfaces/isaontologyreferenceschema/)[]
+> `optional` **unitCategories?**: [`ISAOntologyReferenceSchema`](/isa4js/api/interfaces/isaontologyreferenceschema/)[]
 
 Defined in: [types/isa.d.ts:133](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L133)
 

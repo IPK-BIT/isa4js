@@ -43,7 +43,7 @@ Defined in: [types/isa.d.ts:218](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### category?
 
-> `optional` **category?**: [`ISAFactorSchema`](/api/interfaces/isafactorschema/)
+> `optional` **category?**: [`ISAFactorSchema`](/isa4js/api/interfaces/isafactorschema/)
 
 Defined in: [types/isa.d.ts:219](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L219)
 
@@ -51,7 +51,7 @@ Defined in: [types/isa.d.ts:219](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### comments?
 
-> `optional` **comments?**: [`ISACommentSchema`](/api/interfaces/isacommentschema/)[]
+> `optional` **comments?**: [`ISACommentSchema`](/isa4js/api/interfaces/isacommentschema/)[]
 
 Defined in: [types/isa.d.ts:222](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L222)
 
@@ -59,7 +59,7 @@ Defined in: [types/isa.d.ts:222](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### unit?
 
-> `optional` **unit?**: [`ISAOntologyReferenceSchema`](/api/interfaces/isaontologyreferenceschema/)
+> `optional` **unit?**: [`ISAOntologyReferenceSchema`](/isa4js/api/interfaces/isaontologyreferenceschema/)
 
 Defined in: [types/isa.d.ts:221](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L221)
 
@@ -67,6 +67,6 @@ Defined in: [types/isa.d.ts:221](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### value?
 
-> `optional` **value?**: `string` \| `number` \| [`ISAOntologyReferenceSchema`](/api/interfaces/isaontologyreferenceschema/)
+> `optional` **value?**: `string` \| `number` \| [`ISAOntologyReferenceSchema`](/isa4js/api/interfaces/isaontologyreferenceschema/)
 
 Defined in: [types/isa.d.ts:220](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L220)

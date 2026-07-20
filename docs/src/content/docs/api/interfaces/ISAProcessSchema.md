@@ -43,7 +43,7 @@ Defined in: [types/isa.d.ts:253](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### comments?
 
-> `optional` **comments?**: [`ISACommentSchema`](/api/interfaces/isacommentschema/)[]
+> `optional` **comments?**: [`ISACommentSchema`](/isa4js/api/interfaces/isacommentschema/)[]
 
 Defined in: [types/isa.d.ts:263](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L263)
 
@@ -59,7 +59,7 @@ Defined in: [types/isa.d.ts:258](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### executesProtocol?
 
-> `optional` **executesProtocol?**: [`ISAProtocolSchema`](/api/interfaces/isaprotocolschema/)
+> `optional` **executesProtocol?**: [`ISAProtocolSchema`](/isa4js/api/interfaces/isaprotocolschema/)
 
 Defined in: [types/isa.d.ts:255](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L255)
 
@@ -67,7 +67,7 @@ Defined in: [types/isa.d.ts:255](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### inputs?
 
-> `optional` **inputs?**: ([`ISASourceSchema`](/api/interfaces/isasourceschema/) \| [`ISASampleSchema`](/api/interfaces/isasampleschema/) \| [`ISAMaterialSchema`](/api/interfaces/isamaterialschema/) \| [`ISADataSchema`](/api/interfaces/isadataschema/))[]
+> `optional` **inputs?**: ([`ISASourceSchema`](/isa4js/api/interfaces/isasourceschema/) \| [`ISASampleSchema`](/isa4js/api/interfaces/isasampleschema/) \| [`ISAMaterialSchema`](/isa4js/api/interfaces/isamaterialschema/) \| [`ISADataSchema`](/isa4js/api/interfaces/isadataschema/))[]
 
 Defined in: [types/isa.d.ts:261](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L261)
 
@@ -91,7 +91,7 @@ Defined in: [types/isa.d.ts:260](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### outputs?
 
-> `optional` **outputs?**: ([`ISASampleSchema`](/api/interfaces/isasampleschema/) \| [`ISAMaterialSchema`](/api/interfaces/isamaterialschema/) \| [`ISADataSchema`](/api/interfaces/isadataschema/))[]
+> `optional` **outputs?**: ([`ISASampleSchema`](/isa4js/api/interfaces/isasampleschema/) \| [`ISAMaterialSchema`](/isa4js/api/interfaces/isamaterialschema/) \| [`ISADataSchema`](/isa4js/api/interfaces/isadataschema/))[]
 
 Defined in: [types/isa.d.ts:262](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L262)
 
@@ -99,7 +99,7 @@ Defined in: [types/isa.d.ts:262](https://github.com/IPK-BIT/isa4js/blob/main/src
 
 ### parameterValues?
 
-> `optional` **parameterValues?**: [`ISAProcessParameterValueSchema`](/api/interfaces/isaprocessparametervalueschema/)[]
+> `optional` **parameterValues?**: [`ISAProcessParameterValueSchema`](/isa4js/api/interfaces/isaprocessparametervalueschema/)[]
 
 Defined in: [types/isa.d.ts:256](https://github.com/IPK-BIT/isa4js/blob/main/src/types/isa.d.ts#L256)
 
