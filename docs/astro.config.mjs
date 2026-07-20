@@ -11,6 +11,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'isa4js',
+      favicon: "isa4js.png",
       social: [
 		    { icon: 'github', href: 'https://github.com/ipk-bit/isa4js', label: 'GitHub' },
 	    ],

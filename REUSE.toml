@@ -40,7 +40,7 @@ path = [
     "docs/.gitignore",
     "docs/.vscode/*.json",
     "docs/src/assets/houston.webp",
-    "docs/public/*.svg",
+    "docs/public/*.png",
     "docs/src/assets/*.png",
     "docs/typedoc.json"
 ]
