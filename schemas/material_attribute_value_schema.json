@@ -1,8 +1,8 @@
 {
     "$id": "https://raw.githubusercontent.com/ISA-tools/isa-api/master/isatools/resources/schemas/isa_model_version_1_0_schemas/core/material_attribute_schema.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title" : "ISA Material Attribute schema",
-    "name" : "ISA Material Attribute schema",
+    "title" : "ISA Material Attribute Value schema",
+    "name" : "ISA Material Attribute Value schema",
     "description" : "JSON-schema representing an ISA model material attribute (or characteristic) value object",
     "type" : "object",
     "properties" : {
