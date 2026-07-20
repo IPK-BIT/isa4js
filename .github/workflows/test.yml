@@ -20,12 +20,12 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 11 # Aligned with your package.json "^11.5.1" requirement
+          version: 11.12.0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24 # Upgraded to match standard modern GitHub runners
+          node-version: 24
           cache: 'pnpm'
 
       - name: Install dependencies

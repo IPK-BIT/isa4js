@@ -1,7 +1,6 @@
 {
   "name": "isa4js",
   "version": "0.1.0",
-  "packageManager": "pnpm@11.12.0",
   "description": "Transform ISA-JSON to ISA-Tab format",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

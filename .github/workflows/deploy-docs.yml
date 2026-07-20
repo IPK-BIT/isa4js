@@ -22,10 +22,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
       - name: Install, build, and upload docs
         uses: withastro/action@v3
         with:
           path: './docs'
+          version: 11.12.0
 
   deploy:
     needs: build
