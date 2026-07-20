@@ -1,7 +1,8 @@
 {
   "name": "docs",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "packageManager": "pnpm@11.12.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
