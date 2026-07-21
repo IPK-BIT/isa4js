@@ -42,7 +42,8 @@ path = [
     "docs/src/assets/houston.webp",
     "docs/public/*.png",
     "docs/src/assets/*.png",
-    "docs/typedoc.json"
+    "docs/typedoc.json",
+    ".changeset/*"
 ]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Manuel Feser <feser@ipk-gatersleben.de>"
