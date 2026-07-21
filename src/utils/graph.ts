@@ -126,13 +126,30 @@ export class FlowGraph {
       this.edges.push(edge);
 
       // Build adjacencies
-      for (const inId of inputIds) {
-        for (const outId of outputIds) {
+      const isOneToOne = inputIds.length === outputIds.length && inputIds.length > 0;
+
+      if (isOneToOne) {
+        // Zip inputs to outputs 1-to-1 when node counts match
+        for (let i = 0; i < inputIds.length; i++) {
+          const inId = inputIds[i];
+          const outId = outputIds[i];
+
           if (!this.outgoing.has(inId)) this.outgoing.set(inId, []);
           this.outgoing.get(inId)!.push({ edge, targetId: outId });
 
           if (!this.incoming.has(outId)) this.incoming.set(outId, []);
           this.incoming.get(outId)!.push({ edge, sourceId: inId });
+        }
+      } else {
+        // Fallback to Cartesian product for pooling/splitting processes (N-to-M)
+        for (const inId of inputIds) {
+          for (const outId of outputIds) {
+            if (!this.outgoing.has(inId)) this.outgoing.set(inId, []);
+            this.outgoing.get(inId)!.push({ edge, targetId: outId });
+
+            if (!this.incoming.has(outId)) this.incoming.set(outId, []);
+            this.incoming.get(outId)!.push({ edge, sourceId: inId });
+          }
         }
       }
     }

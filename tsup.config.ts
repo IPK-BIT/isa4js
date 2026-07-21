@@ -6,6 +6,7 @@ import { defineConfig, type Options } from 'tsup';
 export default defineConfig((options) => {
   const commonConfig: Options = {
     format: ['cjs', 'esm'],
+    dts: false,
     sourcemap: true,
   };
 
@@ -15,7 +16,6 @@ export default defineConfig((options) => {
       entry: {
         index: 'src/index.ts',
       },
-      dts: !options.watch,
       clean: true,
     },
     {
