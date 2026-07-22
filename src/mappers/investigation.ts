@@ -66,6 +66,43 @@ export function transposeSection(
     return `${sectionHeader} ${field.tabLabel}\t${values}`;
   }).join('\n');
 }
+
+/**
+ * Transposes comments from an array of items, aligning by comment name and item index.
+ */
+export function transposeComments(
+  sectionHeader: string,
+  items: any[] | undefined
+): string {
+  if (!items || items.length === 0) return '';
+
+  // Collect all unique comment names across all items in their order of appearance
+  const commentNames: string[] = [];
+  items.forEach(item => {
+    if (item.comments && Array.isArray(item.comments)) {
+      item.comments.forEach((comment: any) => {
+        if (comment && comment.name && !commentNames.includes(comment.name)) {
+          commentNames.push(comment.name);
+        }
+      });
+    }
+  });
+
+  if (commentNames.length === 0) return '';
+
+  return commentNames.map(name => {
+    const values = items
+      .map(item => {
+        const found = item.comments?.find((c: any) => c.name === name);
+        const val = found && found.value !== undefined && found.value !== null ? String(found.value) : '';
+        return val !== '' ? `"${val}"` : '""';
+      })
+      .join('\t');
+
+    return `${sectionHeader} Comment [${name}]\t${values}`;
+  }).join('\n');
+}
+
 /**
  * Maps the complete ISA-JSON Investigation object to the i_investigation.txt string.
  */
@@ -82,6 +119,8 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
     { jsonKey: 'version', tabLabel: 'Version' },
     { jsonKey: 'description', tabLabel: 'Description' }
   ]));
+  const osrComments = transposeComments('Term Source', isaJson.ontologySourceReferences);
+  if (osrComments) sections.push(osrComments);
 
   // =========================================================================
   // 2. INVESTIGATION METADATA
@@ -92,6 +131,15 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
   sections.push(`Investigation Description\t"${isaJson.description || ''}"`);
   sections.push(`Investigation Submission Date\t"${isaJson.submissionDate || ''}"`);
   sections.push(`Investigation Public Release Date\t"${isaJson.publicReleaseDate || ''}"`);
+
+  if (isaJson.comments && isaJson.comments.length > 0) {
+    isaJson.comments.forEach(comment => {
+      if (comment && comment.name) {
+        const val = comment.value !== undefined && comment.value !== null ? String(comment.value) : '';
+        sections.push(`Comment [${comment.name}]\t"${val}"`);
+      }
+    });
+  }
 
   // =========================================================================
   // 3. INVESTIGATION PUBLICATIONS
@@ -106,6 +154,8 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
     { jsonKey: 'status.termAccession', tabLabel: 'Status Term Accession Number' },
     { jsonKey: 'status.termSource', tabLabel: 'Status Term Source REF' }
   ]));
+  const iPubComments = transposeComments('Investigation Publication', isaJson.publications);
+  if (iPubComments) sections.push(iPubComments);
 
   // =========================================================================
   // 4. INVESTIGATION CONTACTS
@@ -124,6 +174,8 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
     { jsonKey: 'roles.termAccession', tabLabel: 'Roles Term Accession Number' },
     { jsonKey: 'roles.termSource', tabLabel: 'Roles Term Source REF' }
   ]));
+  const iPersonComments = transposeComments('Investigation Person', isaJson.people);
+  if (iPersonComments) sections.push(iPersonComments);
 
   // =========================================================================
   // 5. STUDIES (The core loops)
@@ -139,6 +191,15 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
       sections.push(`Study Public Release Date\t"${study.publicReleaseDate || ''}"`);
       sections.push(`Study File Name\t"s_${study.identifier || `study_${index}`}.txt"`);
 
+      if (study.comments && study.comments.length > 0) {
+        study.comments.forEach(comment => {
+          if (comment && comment.name) {
+            const val = comment.value !== undefined && comment.value !== null ? String(comment.value) : '';
+            sections.push(`Comment [${comment.name}]\t"${val}"`);
+          }
+        });
+      }
+
       // 5.2 Study Design Descriptors
       sections.push('STUDY DESIGN DESCRIPTORS');
       sections.push(transposeSection('Study Design', study.studyDesignDescriptors, [
@@ -146,6 +207,8 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
         { jsonKey: 'annotationValue', tabLabel: 'Type Term Accesion Number' },
         { jsonKey: 'annotationValue', tabLabel: 'Type Term Source REF' }
       ]));
+      const studyDesignComments = transposeComments('Study Design', study.studyDesignDescriptors);
+      if (studyDesignComments) sections.push(studyDesignComments);
 
       // 5.3 Study Publications
       sections.push('STUDY PUBLICATIONS');
@@ -158,8 +221,10 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
         { jsonKey: 'status.termAccession', tabLabel: 'Status Term Accession Number' },
         { jsonKey: 'status.termSource', tabLabel: 'Status Term Source REF' }
       ]));
+      const studyPubComments = transposeComments('Study Publication', study.publications);
+      if (studyPubComments) sections.push(studyPubComments);
 
-      // 5.4 Study Factors (Corrected to 'factorName' for ISA-JSON compatibility)
+      // 5.4 Study Factors
       sections.push('STUDY FACTORS');
       sections.push(transposeSection('Study Factor', study.factors, [
         { jsonKey: 'factorName', tabLabel: 'Name' },
@@ -167,6 +232,8 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
         { jsonKey: 'factorType.termAccession', tabLabel: 'Type Term Accession Number' },
         { jsonKey: 'factorType.termSource', tabLabel: 'Type Term Source REF' }
       ]));
+      const studyFactorComments = transposeComments('Study Factor', study.factors);
+      if (studyFactorComments) sections.push(studyFactorComments);
 
       // 5.5 Study Assays
       sections.push('STUDY ASSAYS');
@@ -180,6 +247,8 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
         { jsonKey: 'technologyType.termSource', tabLabel: 'Technology Type Term Source REF' },
         { jsonKey: 'technologyPlatform', tabLabel: 'Technology Platform' }
       ]));
+      const studyAssayComments = transposeComments('Study Assay', study.assays);
+      if (studyAssayComments) sections.push(studyAssayComments);
 
       // 5.6 Study Protocols
       sections.push('STUDY PROTOCOLS');
@@ -199,6 +268,8 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
         { jsonKey: 'components.componentType.termAccession', tabLabel: 'Components Type Term Accession Number' },
         { jsonKey: 'components.componentType.termSource', tabLabel: 'Components Type Term Source REF' }
       ]));
+      const studyProtocolComments = transposeComments('Study Protocol', study.protocols);
+      if (studyProtocolComments) sections.push(studyProtocolComments);
 
       // 5.7 Study Contacts
       sections.push('STUDY CONTACTS');
@@ -215,6 +286,8 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
         { jsonKey: 'roles.termAccession', tabLabel: 'Roles Term Accession Number' },
         { jsonKey: 'roles.termSource', tabLabel: 'Roles Term Source REF' }
       ]));
+      const studyPersonComments = transposeComments('Study Person', study.people);
+      if (studyPersonComments) sections.push(studyPersonComments);
     });
   }
 
