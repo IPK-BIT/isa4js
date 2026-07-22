@@ -1,6 +1,6 @@
 {
   "name": "isa4js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Transform ISA-JSON to ISA-Tab format",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
