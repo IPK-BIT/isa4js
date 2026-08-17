@@ -35,9 +35,6 @@ jobs:
           cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Strip npmrc auth-token placeholder (breaks OIDC trusted publishing)
-        run: sed -i '/_authToken/d' ~/.npmrc
-
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
