@@ -1,5 +1,11 @@
 # isa4js
 
+## 0.1.3
+
+### Patch Changes
+
+- 2d78a0c: updated package.json and README.md
+
 ## 0.1.2
 
 ### Patch Changes
