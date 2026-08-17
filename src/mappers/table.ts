@@ -3,6 +3,7 @@
 
 import { FlowGraph, GraphNode, ProcessEdge } from '../utils/graph.js';
 import { ISAStudyJSONSchema, ISAAssayJSONSchema } from '../types/isa.js';
+import { quoteCell } from '../utils/tsv.js';
 
 /**
  * Metadata configuration to keep track of how headers maps to path traversal.
@@ -145,6 +146,21 @@ function buildHeaderMappings(longestSequence: any[]): { headers: string[]; mappi
         });
       }
 
+      // Extract Process/Protocol Comments
+      if (element.data.rawProcess.comments) {
+        element.data.rawProcess.comments.forEach((comment: any, commIdx: number) => {
+          const commHeader = `Comment [${comment.name}]`;
+          headers.push(commHeader);
+          mappings.push({
+            header: commHeader,
+            type: 'protocol',
+            nodeIndex: nodeCounter - 1,
+            protocolIndex: currentProtoIdx,
+            extractor: (edge: ProcessEdge) => edge.rawProcess.comments?.[commIdx]?.value || ''
+          });
+        });
+      }
+
       protocolCounter++;
     }
   }
@@ -216,7 +232,7 @@ export function convertTable(tableData: ISAStudyJSONSchema | ISAAssayJSONSchema)
 
   // 3. Compile the resulting arrays into double-quote wrapped, tab-delimited values
   const headerRow = headers.join('\t');
-  const bodyRows = rows.map(row => row.map(cell => `"${cell}"`).join('\t')).join('\n');
+  const bodyRows = rows.map(row => row.map(cell => quoteCell(cell)).join('\t')).join('\n');
 
   return `${headerRow}\n${bodyRows}`;
 }

@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: ISC
 
 import { ISAInvestigationSchema } from '../types/isa.js';
+import { quoteCell } from '../utils/tsv.js';
 
 /**
  * Extracts a value from a potentially nested ISA-JSON field.
@@ -57,10 +58,7 @@ export function transposeSection(
 
   return fields.map(field => {
     const values = items
-      .map(item => {
-        const val = extractValue(item, field.jsonKey);
-        return val !== undefined && val !== null && val !== '' ? `"${val}"` : '""';
-      })
+      .map(item => quoteCell(extractValue(item, field.jsonKey)))
       .join('\t');
 
     return `${sectionHeader} ${field.tabLabel}\t${values}`;
@@ -94,8 +92,7 @@ export function transposeComments(
     const values = items
       .map(item => {
         const found = item.comments?.find((c: any) => c.name === name);
-        const val = found && found.value !== undefined && found.value !== null ? String(found.value) : '';
-        return val !== '' ? `"${val}"` : '""';
+        return quoteCell(found?.value);
       })
       .join('\t');
 
@@ -126,17 +123,16 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
   // 2. INVESTIGATION METADATA
   // =========================================================================
   sections.push('INVESTIGATION');
-  sections.push(`Investigation Identifier\t"${isaJson.identifier || ''}"`);
-  sections.push(`Investigation Title\t"${isaJson.title || ''}"`);
-  sections.push(`Investigation Description\t"${isaJson.description || ''}"`);
-  sections.push(`Investigation Submission Date\t"${isaJson.submissionDate || ''}"`);
-  sections.push(`Investigation Public Release Date\t"${isaJson.publicReleaseDate || ''}"`);
+  sections.push(`Investigation Identifier\t${quoteCell(isaJson.identifier)}`);
+  sections.push(`Investigation Title\t${quoteCell(isaJson.title)}`);
+  sections.push(`Investigation Description\t${quoteCell(isaJson.description)}`);
+  sections.push(`Investigation Submission Date\t${quoteCell(isaJson.submissionDate)}`);
+  sections.push(`Investigation Public Release Date\t${quoteCell(isaJson.publicReleaseDate)}`);
 
   if (isaJson.comments && isaJson.comments.length > 0) {
     isaJson.comments.forEach(comment => {
       if (comment && comment.name) {
-        const val = comment.value !== undefined && comment.value !== null ? String(comment.value) : '';
-        sections.push(`Comment [${comment.name}]\t"${val}"`);
+        sections.push(`Comment [${comment.name}]\t${quoteCell(comment.value)}`);
       }
     });
   }
@@ -184,18 +180,17 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
     isaJson.studies.forEach((study, index) => {
       // 5.1 Study Metadata
       sections.push('STUDY');
-      sections.push(`Study Identifier\t"${study.identifier || ''}"`);
-      sections.push(`Study Title\t"${study.title || ''}"`);
-      sections.push(`Study Description\t"${study.description || ''}"`);
-      sections.push(`Study Submission Date\t"${study.submissionDate || ''}"`);
-      sections.push(`Study Public Release Date\t"${study.publicReleaseDate || ''}"`);
-      sections.push(`Study File Name\t"s_${study.identifier || `study_${index}`}.txt"`);
+      sections.push(`Study Identifier\t${quoteCell(study.identifier)}`);
+      sections.push(`Study Title\t${quoteCell(study.title)}`);
+      sections.push(`Study Description\t${quoteCell(study.description)}`);
+      sections.push(`Study Submission Date\t${quoteCell(study.submissionDate)}`);
+      sections.push(`Study Public Release Date\t${quoteCell(study.publicReleaseDate)}`);
+      sections.push(`Study File Name\t${quoteCell(`s_${study.identifier || `study_${index}`}.txt`)}`);
 
       if (study.comments && study.comments.length > 0) {
         study.comments.forEach(comment => {
           if (comment && comment.name) {
-            const val = comment.value !== undefined && comment.value !== null ? String(comment.value) : '';
-            sections.push(`Comment [${comment.name}]\t"${val}"`);
+            sections.push(`Comment [${comment.name}]\t${quoteCell(comment.value)}`);
           }
         });
       }
@@ -204,8 +199,8 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
       sections.push('STUDY DESIGN DESCRIPTORS');
       sections.push(transposeSection('Study Design', study.studyDesignDescriptors, [
         { jsonKey: 'annotationValue', tabLabel: 'Type' },
-        { jsonKey: 'annotationValue', tabLabel: 'Type Term Accesion Number' },
-        { jsonKey: 'annotationValue', tabLabel: 'Type Term Source REF' }
+        { jsonKey: 'termAccession', tabLabel: 'Type Term Accession Number' },
+        { jsonKey: 'termSource', tabLabel: 'Type Term Source REF' }
       ]));
       const studyDesignComments = transposeComments('Study Design', study.studyDesignDescriptors);
       if (studyDesignComments) sections.push(studyDesignComments);
@@ -237,13 +232,19 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
 
       // 5.5 Study Assays
       sections.push('STUDY ASSAYS');
-      sections.push(transposeSection('Study Assay', study.assays, [
+      // Resolve the same fallback file name convertIsaJsonToIsaTab() uses when assay.filename is omitted,
+      // so the manifest here always matches the actual generated a_*.txt file names.
+      const resolvedAssays = study.assays?.map((assay, assayIdx) => ({
+        ...assay,
+        filename: assay.filename || `a_${study.identifier || `study_${index}`}_assay_${assayIdx}.txt`
+      }));
+      sections.push(transposeSection('Study Assay', resolvedAssays, [
         { jsonKey: 'filename', tabLabel: 'File Name' },
         { jsonKey: 'measurementType.annotationValue', tabLabel: 'Measurement Type' },
-        { jsonKey: 'measurementType.termAccession', tabLabel: 'Measurement Type Term Accesion Number' },
+        { jsonKey: 'measurementType.termAccession', tabLabel: 'Measurement Type Term Accession Number' },
         { jsonKey: 'measurementType.termSource', tabLabel: 'Measurement Type Term Source REF' },
         { jsonKey: 'technologyType.annotationValue', tabLabel: 'Technology Type' },
-        { jsonKey: 'technologyType.termAccession', tabLabel: 'Technology Type Term Accesion Number' },
+        { jsonKey: 'technologyType.termAccession', tabLabel: 'Technology Type Term Accession Number' },
         { jsonKey: 'technologyType.termSource', tabLabel: 'Technology Type Term Source REF' },
         { jsonKey: 'technologyPlatform', tabLabel: 'Technology Platform' }
       ]));
@@ -255,7 +256,7 @@ export function convertInvestigation(isaJson: ISAInvestigationSchema): string {
       sections.push(transposeSection('Study Protocol', study.protocols, [
         { jsonKey: 'name', tabLabel: 'Name' },
         { jsonKey: 'protocolType.annotationValue', tabLabel: 'Type' },
-        { jsonKey: 'protocolType.termAccession', tabLabel: 'Type Term Accesion Number' },
+        { jsonKey: 'protocolType.termAccession', tabLabel: 'Type Term Accession Number' },
         { jsonKey: 'protocolType.termSource', tabLabel: 'Type Term Source REF' },
         { jsonKey: 'description', tabLabel: 'Description' },
         { jsonKey: 'uri', tabLabel: 'URI' },
