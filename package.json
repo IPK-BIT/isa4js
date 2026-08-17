@@ -49,7 +49,7 @@
     "packageManager": {
       "name": "pnpm",
       "version": "^11.5.1",
-      "onFail": "download"
+      "onFail": "warn"
     }
   },
   "type": "module",
