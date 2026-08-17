@@ -37,7 +37,7 @@
     "url": "https://github.com/IPK-BIT/isa4js/issues/new/choose"
   },
   "engines": {
-    "node": ">=24"
+    "node": ">=22.18.0"
   },
   "keywords": ["ISA", "conversion", "ISA-JSON", "ISA-Tab"],
   "author": "Manuel Feser <feser@ipk-gatersleben.de> (https://github.com/feserm)",
