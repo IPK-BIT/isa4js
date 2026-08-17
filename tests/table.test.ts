@@ -211,4 +211,90 @@ describe('Table Graph and Header Utility Tests', () => {
       );
     });
   });
+
+  // ==========================================
+  // ROBUSTNESS: QUOTE ESCAPING, CYCLE DETECTION, PROCESS COMMENTS
+  // ==========================================
+  describe('Robustness fixes', () => {
+    it('should escape embedded double quotes in cell values instead of corrupting the row', () => {
+      const payload = {
+        materials: {
+          sources: [{ "@id": "source_1", name: 'Source "A"' }],
+          samples: [{ "@id": "sample_1", name: "Sample-01" }]
+        },
+        processSequence: [
+          {
+            "@id": "proc_1",
+            executesProtocol: { name: "sample collection" },
+            inputs: [{ "@id": "source_1", name: 'Source "A"', type: "Material" }],
+            outputs: [{ "@id": "sample_1", name: "Sample-01", type: "Material" }]
+          }
+        ]
+      };
+
+      const result = convertTable(payload as any);
+      const lines = result.split('\n');
+
+      expect(lines[1]).toBe(`"Source ""A"""\t"sample collection"\t"Sample-01"`);
+    });
+
+    it('should throw a descriptive error instead of stack-overflowing when processSequence contains a cycle', () => {
+      const cyclicPayload = {
+        materials: {
+          sources: [{ "@id": "R", name: "R" }],
+          otherMaterials: [
+            { "@id": "A", name: "A", type: "Intermediate" },
+            { "@id": "B", name: "B", type: "Intermediate" }
+          ]
+        },
+        processSequence: [
+          {
+            "@id": "proc_0",
+            executesProtocol: { name: "step0" },
+            inputs: [{ "@id": "R", name: "R", type: "Material" }],
+            outputs: [{ "@id": "A", name: "A", type: "Material" }]
+          },
+          {
+            "@id": "proc_1",
+            executesProtocol: { name: "step1" },
+            inputs: [{ "@id": "A", name: "A", type: "Material" }],
+            outputs: [{ "@id": "B", name: "B", type: "Material" }]
+          },
+          {
+            "@id": "proc_2",
+            executesProtocol: { name: "step2" },
+            inputs: [{ "@id": "B", name: "B", type: "Material" }],
+            outputs: [{ "@id": "A", name: "A", type: "Material" }]
+          }
+        ]
+      };
+
+      expect(() => determineHeaders(cyclicPayload as any)).toThrow(/cycle/i);
+    });
+
+    it('should surface process/protocol-level comments as Comment [...] columns', () => {
+      const payload = {
+        materials: {
+          sources: [{ "@id": "source_1", name: "Source-01" }],
+          samples: [{ "@id": "sample_1", name: "Sample-01" }]
+        },
+        processSequence: [
+          {
+            "@id": "proc_1",
+            executesProtocol: { name: "sequencing run" },
+            inputs: [{ "@id": "source_1", name: "Source-01", type: "Material" }],
+            outputs: [{ "@id": "sample_1", name: "Sample-01", type: "Material" }],
+            comments: [{ name: "Instrument Serial Number", value: "SN12345" }]
+          }
+        ]
+      };
+
+      const headers = determineHeaders(payload as any);
+      expect(headers).toContain('Comment [Instrument Serial Number]');
+
+      const result = convertTable(payload as any);
+      const lines = result.split('\n');
+      expect(lines[1]).toBe(`"Source-01"\t"sequencing run"\t"SN12345"\t"Sample-01"`);
+    });
+  });
 });

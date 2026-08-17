@@ -173,7 +173,13 @@ export class FlowGraph {
     const paths: any[][] = [];
     const roots = this.getRoots();
 
-    const dfs = (currentNodeId: string, currentPath: any[]) => {
+    const dfs = (currentNodeId: string, currentPath: any[], visiting: Set<string>) => {
+      if (visiting.has(currentNodeId)) {
+        throw new Error(
+          `FlowGraph: cycle detected in processSequence — node "${currentNodeId}" revisits an ancestor of its own path`
+        );
+      }
+
       const node = this.nodes.get(currentNodeId)!;
       const nextSteps = this.outgoing.get(currentNodeId) || [];
 
@@ -182,17 +188,19 @@ export class FlowGraph {
         return;
       }
 
+      const nextVisiting = new Set(visiting).add(currentNodeId);
+
       for (const step of nextSteps) {
         dfs(step.targetId, [
           ...currentPath,
           { type: 'node', data: node },
           { type: 'protocol', data: step.edge }
-        ]);
+        ], nextVisiting);
       }
     };
 
     for (const root of roots) {
-      dfs(root.id, []);
+      dfs(root.id, [], new Set());
     }
 
     return paths;

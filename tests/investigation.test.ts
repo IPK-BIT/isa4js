@@ -143,7 +143,11 @@ describe('Investigation Mapper Unit Tests', () => {
             description: "Study tracking freezing stressors",
             submissionDate: "2026-07-15",
             publicReleaseDate: "2026-12-31",
-            studyDesignDescriptors: [{ annotationValue: "parallel group design" }],
+            studyDesignDescriptors: [{
+              annotationValue: "parallel group design",
+              termAccession: "OBI:0500006",
+              termSource: "OBI"
+            }],
             publications: [
               { doi: "10.5678/study", title: "Study Paper", authorList: "Author B" }
             ],
@@ -156,6 +160,12 @@ describe('Investigation Mapper Unit Tests', () => {
                 measurementType: { annotationValue: "metabolite profiling" },
                 technologyType: { annotationValue: "mass spectrometry" },
                 technologyPlatform: "Orbitrap"
+              },
+              {
+                // No filename given - must fall back to the same generated name
+                // convertIsaJsonToIsaTab() would use for this file.
+                measurementType: { annotationValue: "transcription profiling" },
+                technologyType: { annotationValue: "DNA microarray" }
               }
             ],
             protocols: [
@@ -227,6 +237,17 @@ describe('Investigation Mapper Unit Tests', () => {
       expect(result).toContain('Study Person Roles Term Accession Number\t"MS:1000583"');
       expect(result).toContain('Study Person Roles Term Source REF\t"PSI-MS"');
 
+      // --- STUDY DESIGN DESCRIPTORS TRANSPOSED VALUES (TAN / TSR must not just repeat Type) ---
+      expect(result).toContain('Study Design Type\t"parallel group design"');
+      expect(result).toContain('Study Design Type Term Accession Number\t"OBI:0500006"');
+      expect(result).toContain('Study Design Type Term Source REF\t"OBI"');
+
+      // --- STUDY ASSAYS FILE NAME FALLBACK (must match convertIsaJsonToIsaTab()'s generated name) ---
+      expect(result).toContain('Study Assay File Name\t"a_metabolomics.txt"\t"a_s_001_assay_1.txt"');
+
+      // --- NO MISSPELLED "Accesion" LABELS ---
+      expect(result).not.toContain('Accesion');
+
       // --- STUDY FACTORS TRANSPOSED VALUES ---
       expect(result).toContain('Study Factor Name\t"Temperature"');
       expect(result).toContain('Study Factor Type\t"physical quality"');
@@ -249,6 +270,21 @@ describe('Investigation Mapper Unit Tests', () => {
       expect(result).toContain('Study Protocol Components Type\t"instrument"');
       expect(result).toContain('Study Protocol Components Type Term Accession Number\t"NCIT:C12345"');
       expect(result).toContain('Study Protocol Components Type Term Source REF\t"NCIT"');
+    });
+
+    it('should escape embedded double quotes in scalar fields, transposed sections, and comments', () => {
+      const mockPayload: Partial<ISAInvestigationSchema> = {
+        title: 'A "Global" Study',
+        ontologySourceReferences: [
+          { name: 'NCBITaxon', description: 'The "NCBI" taxonomy', comments: [{ name: 'Note', value: 'See "README"' }] }
+        ]
+      };
+
+      const result = convertInvestigation(mockPayload as ISAInvestigationSchema);
+
+      expect(result).toContain('Investigation Title\t"A ""Global"" Study"');
+      expect(result).toContain('Term Source Description\t"The ""NCBI"" taxonomy"');
+      expect(result).toContain('Term Source Comment [Note]\t"See ""README"""');
     });
   });
 });
