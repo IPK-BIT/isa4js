@@ -15,6 +15,8 @@ A robust, lightweight TypeScript library that converts complex **ISA-JSON** stru
 
 Unlike simple row-by-row mappers, this tool reconstructs experimental workflows by tracing a Directed Acyclic Graph (DAG) from root nodes to leaf nodes, generating highly accurate tabular metadata matrices.
 
+📖 Full documentation: **[ipk-bit.github.io/isa4js](https://ipk-bit.github.io/isa4js/)**
+
 ---
 
 ## Features
