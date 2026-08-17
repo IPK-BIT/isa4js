@@ -20,6 +20,7 @@
     "change": "changeset",
     "version-packages": "changeset version",
     "release:tag": "changeset tag",
+    "release": "changeset publish",
     "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -27,9 +28,19 @@
     "prepack": "pnpm run build",
     "prepublishOnly": "pnpm run test"
   },
-  "keywords": [],
-  "author": "",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ipk-bit/isa4js"
+  },
+  "homepage": "https://ipk-bit.github.io/isa4js",
+  "bugs": {
+    "url": "https://github.com/IPK-BIT/isa4js/issues/new/choose"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "keywords": ["ISA", "conversion", "ISA-JSON", "ISA-Tab"],
+  "author": "Manuel Feser <feser@ipk-gatersleben.de> (https://github.com/feserm)",
   "publishConfig": {
     "access": "public"
   },
